@@ -15,7 +15,7 @@ const UsuarioShcema = Shema({
     },
     role: {
         type: String,
-        require: true,
+        default: 'STUDENT_ROLE',
         enum: ["STUDENT_ROLE", "TEACHER_ROLE"]
     }
 })
