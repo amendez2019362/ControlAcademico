@@ -2,13 +2,21 @@ const express = require('express');
 const cors = require('cors');
 const { dbConnection } = require('../db/config');
 
-class Server {
+class Server{
 
     constructor(){
         this.app = express();
         this.port = process.env.PORT;
+        this.userPath = '/api/user';
+        this.clasePath = '/api/clase';
 
+        this.conectarDB();
         this.middlewares();
+        this.routes();
+    }
+
+    async conectarDB(){
+        await dbConnection();
     }
 
     middlewares(){
@@ -17,11 +25,17 @@ class Server {
         this.app.use(express.json());
     }
 
+    routes(){
+        this.app.use(this.userPath, require('../routes/usuario.routes'));
+        this.app.use(this.clasePath, require('../routes/clase.routes'));
+    }
+
     listen(){
-        this.app.listen(this.port,() =>{
-            console.log('Servidor ejecutado y escuchando', this.port);
-        })
+        this.app.listen(this.port, () => {
+            console.log('Servidor ejecutado y escuchando en el puerto', this.port);
+        });
     }
 }
+
 
 module.exports = Server;

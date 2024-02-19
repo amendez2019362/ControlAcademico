@@ -1,23 +1,31 @@
-const { Shema, model } = require('mongoose');
+const { Schema, model } = require('mongoose');
 
-const UsuarioShcema = Shema({
+const UsuarioSchema = Schema({
     nombre: {
         type: String,
-        requir: [true, 'El nombre es obligatorio']
+        required: [true, 'El nombre es obligatorio']
     },
     correo: {
         type: String,
-        require: [true, 'El correo es obligatorio']
+        required: [true, 'El correo es obligatorio']
     },
     password: {
         type: String,
-        require: [true, 'El password es obligatorio']
+        required: [true, 'El password es obligatorio']
+    },
+    clase: {
+        type: Schema.Types.ObjectId,
+        ref: 'Clase' 
     },
     role: {
         type: String,
-        default: 'STUDENT_ROLE',
+        default: "STUDENT_ROLE",
         enum: ["STUDENT_ROLE", "TEACHER_ROLE"]
+    },
+    estado: {
+        type: Boolean,
+        default: true
     }
-})
+});
 
 module.exports = model('Usuario', UsuarioSchema);
