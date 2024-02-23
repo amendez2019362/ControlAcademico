@@ -4,7 +4,8 @@ const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
 const { existenteEmailMaestro, existeMaestroById } = require('../helpers/db-validators');
 
-const { maestroGet, maestroPut, maestroDelete, getMaestroById, maestroPost, } = require('../controller/maestro.controller');
+const { maestroGet, maestroPut, maestroDelete, maestroPost, getMaestroById} = require('../controller/maestro.controller');
+const maestro = require('../models/maestro');
 const router = Router();
 
 router.get("/", maestroGet);
