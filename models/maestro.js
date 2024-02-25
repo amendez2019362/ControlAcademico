@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model, default: mongoose, mongo } = require('mongoose');
 
 const MaestroSchema = Schema({
     nombre: {
@@ -17,8 +17,8 @@ const MaestroSchema = Schema({
         type: String,
         default: "TEACHER_ROLE",
     },
-    correo:{
-        type: String,
+    curso:{
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'Curso'
     },
     estado: {

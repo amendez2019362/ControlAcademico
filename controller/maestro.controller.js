@@ -9,13 +9,26 @@ const maestroGet = async (req, res = response) => {
     const [total, maestros] = await Promise.all([
         Maestro.countDocuments(query),
         Maestro.find(query)
+            .select('nombre')
+            .select('curso')
+            .populate({
+                path: 'curso',
+                match: {estado: true},
+                select: 'nombre'
+            })
             .skip(Number(desde))
             .limit(Number(limite))
     ]);
 
+    const maestroCurso = maestro.map(maestro => ({
+        _id: maestro._id,
+        nombre: maestro.nombre,
+        curso: maestro.curso.map(curso => curso.nombre)
+    }));
+
     res.status(200).json({
         total,
-        maestros
+        maestros: maestroCurso
     });
 };
 
@@ -56,8 +69,8 @@ const maestroDelete = async (req, res) => {
 }
 
 const maestroPost = async (req, res) => {
-    const { nombre, correo, password, role } = req.body;
-    const maestro = new Maestro({ nombre, correo, password, role });
+    const { nombre, correo, password, curso } = req.body;
+    const maestro = new Maestro({ nombre, correo, password, curso });
 
     const salt = bcryptjs.genSaltSync();
     maestro.password = bcryptjs.hashSync(password, salt);

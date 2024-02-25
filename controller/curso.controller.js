@@ -28,7 +28,49 @@ const getCursoById = async (req, res) => {
     });
 }
 
+const cursoPost = async (req, res) => {
+    const {nombre} = req.body;
+    try {
+        const curso = new Curso({
+            nombre
+        });
+
+        await curso.save();
+        res.status(200).json({
+            curso
+        });
+    } catch (e) {
+        console.error(e);
+        res.status(500).json({ msg: 'No se pudo crear el curso'});
+    }
+}
+
+const cursoPut =  async (req, res) => {
+    const{id} = req.params;
+    const{_id, estado, ...resto} = req.body;
+    await Curso.findByIdAndUpdate(id, resto);
+    const curso = await Curso.findOne({_id: id});
+
+    res.status(200).json({
+        msg: 'Curso actualizado exitosamente',
+        curso
+    });
+}
+
+const cursoDelete = async (req, res) => {
+    const{id} = req.params;
+    await Curso.findByIdAndUpdate(id, {estado: false});
+    const curso = await Curso.findOne({_id: id});
+
+    res.status(200).json({
+        msg: 'Se elimino el curso'
+    });
+}
+
 module.exports = {
     cursoGet,
-    getCursoById
+    getCursoById,
+    cursoPost,
+    cursoPut,
+    cursoDelete
 }

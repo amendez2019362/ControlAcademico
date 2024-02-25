@@ -9,13 +9,26 @@ const alumnoGet = async (req, res = response) => {
     const [total, alumnos] = await Promise.all([
         Alumno.countDocuments(query),
         Alumno.find(query)
+            .select('nomrbre')
+            .select('curso')
+            .populate({
+                path: 'curso',
+                match: { estado: true },
+                select: 'nombre'
+            })
             .skip(Number(desde))
             .limit(Number(limite))
     ]);
 
+    const alumnoCurso = alumno.map(alumno => ({
+        _id: alumno._id,
+        nombre: alumno.nombre,
+        curso: alumno.curso.map(curso => curso.nombre)
+    }));
+
     res.status(200).json({
         total,
-        alumnos
+        alumnos: alumnoCurso
     });
 };
 
@@ -56,8 +69,8 @@ const alumnoDelete = async (req, res) => {
 }
 
 const alumnoPost = async (req, res) => {
-    const { nombre, correo, password, clase, role } = req.body;
-    const alumno = new Alumno({ nombre, correo, password, clase, role });
+    const { nombre, correo, password, curso } = req.body;
+    const alumno = new Alumno({ nombre, correo, password, curso });
 
     const salt = bcryptjs.genSaltSync();
     alumno.password = bcryptjs.hashSync(password, salt);
