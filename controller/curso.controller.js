@@ -18,3 +18,17 @@ const cursoGet = async (req, res = response) => {
         cursos
     });
 };
+
+const getCursoById = async (req, res) => {
+    const {id} = req.params;
+    const curso = await Curso.findOne({_id: id});
+
+    res.status(200).json({
+        curso
+    });
+}
+
+module.exports = {
+    cursoGet,
+    getCursoById
+}
