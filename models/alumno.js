@@ -17,6 +17,10 @@ const AlumnoSchema = Schema({
         type: String,
         default: "STUDENT_ROLE",
     },
+    curso:{
+        type: String,
+        ref: 'Curso'
+    },
     estado: {
         type: Boolean,
         default: true

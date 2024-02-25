@@ -17,6 +17,10 @@ const MaestroSchema = Schema({
         type: String,
         default: "TEACHER_ROLE",
     },
+    correo:{
+        type: String,
+        ref: 'Curso'
+    },
     estado: {
         type: Boolean,
         default: true

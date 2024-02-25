@@ -49,7 +49,7 @@ const maestroDelete = async (req, res) => {
     const maaestroAutenticado = req.maestro;
 
     res.status(200).json({
-        msg: 'Alumno a eliminar',
+        msg: 'Maestro a eliminar',
         maestro,
         maestroAutenticado
     });
@@ -69,5 +69,9 @@ const maestroPost = async (req, res) => {
 }
 
 module.exports = {
-
+    maestroGet,
+    getMaestroById,
+    maestroPost,
+    maestroPut,
+    maestroDelete
 }
