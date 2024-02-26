@@ -7,7 +7,8 @@ const AlumnoSchema = Schema({
     },
     correo: {
         type: String,
-        required: [true, 'El correo es obligatorio']
+        required: [true, 'El correo es obligatorio'],
+        nique: true
     },
     password: {
         type: String,

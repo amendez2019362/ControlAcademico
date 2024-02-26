@@ -10,38 +10,44 @@ const login = async (req, res) => {
     let usuario;
 
     try {
-        const alumno = await Alumno.FindOne({ correo });
-        const maestro = await Maestro.FindOne({ correo })
+        const alumno = await Alumno.findOne({ correo });
+        const maestro = await Maestro.findOne({ correo });
 
         if (!alumno  && !maestro) {
             return res.status(400).json({
                 msg: 'El correo no esta registrado'
-            })
+            });
         }
 
         if (alumno) {
             if (!alumno.estado) {
                 return res.status(400).json({
                     msg: 'El alumno no existe en la base de datos'
-                }) 
+                });
             }
 
-            const validPassword = bcryptjs.compareSync(password, alumno.password);
+            const validPasswordA = bcryptjs.compareSync(password, alumno.password);
             console.log(password);
             console.log(alumno.password);
-            if (!validPassword) {
+            if (!validPasswordA) {
                 return res.status(400).json({
                     msg: 'Contraseña Incorrecta'
-                })
+                });
             }
     
             token = await generarJWT(alumno.id);
             usuario = alumno;
-
         }
         
         if (maestro) {
             if (!maestro.estado) {
+                return res.status(400).json({
+                    msg: 'El maestro no existe en la base de datos'
+                });
+            }
+
+            const validPasswordM = bcryptjs.compareSync(password, maestro.password);
+            if (!validPasswordM) {
                 return res.status(400).json({
                     msg: 'Contraseña incorrecta'
                 });
@@ -60,7 +66,7 @@ const login = async (req, res) => {
     } catch (e) {
         console.log(e);
         res.status(500).json({
-            msg: 'Comuniquese con el admin'
+            msg: 'No se a podido logear'
         })
     }
 }
@@ -68,3 +74,4 @@ const login = async (req, res) => {
 module.exports = {
     login
 }
+
