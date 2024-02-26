@@ -6,38 +6,56 @@ const bcryptjs = require('bcryptjs');
 const login = async (req, res) => {
     const { correo, password } = req.body;
 
+    let token;
+    let usuario;
+
     try {
         const alumno = await Alumno.FindOne({ correo });
         const maestro = await Maestro.FindOne({ correo })
 
-        console.log(alumno)
-        console.log(maestro)
-
-        if (!alumno) {
+        if (!alumno  && !maestro) {
             return res.status(400).json({
                 msg: 'El correo no esta registrado'
             })
         }
 
-        if (!alumno.estado) {
-            return res.status(400).json({
-                msg: 'El alumno no existe en la base de datos'
-            })
+        if (alumno) {
+            if (!alumno.estado) {
+                return res.status(400).json({
+                    msg: 'El alumno no existe en la base de datos'
+                }) 
+            }
+
+            const validPassword = bcryptjs.compareSync(password, alumno.password);
+            console.log(password);
+            console.log(alumno.password);
+            if (!validPassword) {
+                return res.status(400).json({
+                    msg: 'Contraseña Incorrecta'
+                })
+            }
+    
+            token = await generarJWT(alumno.id);
+            usuario = alumno;
+
+        }
+        
+        if (maestro) {
+            if (!maestro.estado) {
+                return res.status(400).json({
+                    msg: 'Contraseña incorrecta'
+                });
+            }
+            token = await generarJWT(maestro.id);
+            usuario = maestro;
+
         }
 
-        const validPassword = bcryptjs.compareSync(password, alumno.password);
-        if (!validPassword) {
-            return res.statur(400).json({
-                msg: 'Contraseña Incorrecta'
-            })
-        }
-
-        const token = await generarJWT(alumno.id);
         res.status(200).json({
-            msg: 'alumno logeado correctamente',
-            alumno,
+            msg: 'Login OK',
+            usuario,
             token
-        })
+        });
 
     } catch (e) {
         console.log(e);

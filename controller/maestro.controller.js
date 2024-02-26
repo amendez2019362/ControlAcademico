@@ -10,9 +10,9 @@ const maestroGet = async (req, res = response) => {
         Maestro.countDocuments(query),
         Maestro.find(query)
             .select('nombre')
-            .select('curso')
+            .select('cursos')
             .populate({
-                path: 'curso',
+                path: 'cursos',
                 match: {estado: true},
                 select: 'nombre'
             })
@@ -20,10 +20,10 @@ const maestroGet = async (req, res = response) => {
             .limit(Number(limite))
     ]);
 
-    const maestroCurso = maestro.map(maestro => ({
+    const maestroCurso = maestros.map(maestro => ({
         _id: maestro._id,
         nombre: maestro.nombre,
-        curso: maestro.curso.map(curso => curso.nombre)
+        cursos: maestro.cursos.map(curso => curso.nombre)
     }));
 
     res.status(200).json({

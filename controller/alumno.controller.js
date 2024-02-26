@@ -10,9 +10,9 @@ const alumnoGet = async (req, res = response) => {
         Alumno.countDocuments(query),
         Alumno.find(query)
             .select('nomrbre')
-            .select('curso')
+            .select('cursos')
             .populate({
-                path: 'curso',
+                path: 'cursos',
                 match: { estado: true },
                 select: 'nombre'
             })
@@ -20,15 +20,15 @@ const alumnoGet = async (req, res = response) => {
             .limit(Number(limite))
     ]);
 
-    const alumnoCurso = alumno.map(alumno => ({
+    const alumnoCursos = alumnos.map(alumno => ({
         _id: alumno._id,
         nombre: alumno.nombre,
-        curso: alumno.curso.map(curso => curso.nombre)
+        cursos: alumno.cursos.map(curso => curso.nombre)
     }));
 
     res.status(200).json({
         total,
-        alumnos: alumnoCurso
+        alumnos: alumnoCursos
     });
 };
 

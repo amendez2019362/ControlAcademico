@@ -16,11 +16,12 @@ const AlumnoSchema = Schema({
     role: {
         type: String,
         default: "STUDENT_ROLE",
+        enum: ['STUDENT_ROLE', 'TEACHER_ROLE']
     },
-    curso:{
+    cursos:[{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Curso'
-    },
+    }],
     estado: {
         type: Boolean,
         default: true
