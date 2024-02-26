@@ -10,10 +10,10 @@ const validarCampos = (req, res, next) => {
         return res.status(400).json(error);
     }
 
-    const { cursos } = req.body
+    const { cursos } = req.body;
     const alumno = new Alumno();
 
-    if (cursos && curso.length > 0) {
+    if (cursos && cursos.length > 0) {
         for (let _id of cursos){
             const curso = Curso.findById(_id);
             if(!curso){

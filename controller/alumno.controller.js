@@ -69,8 +69,8 @@ const alumnoDelete = async (req, res) => {
 }
 
 const alumnoPost = async (req, res) => {
-    const { nombre, correo, password, curso } = req.body;
-    const alumno = new Alumno({ nombre, correo, password, curso });
+    const { nombre, correo, password, cursos } = req.body;
+    const alumno = new Alumno({ nombre, correo, password, cursos });
 
     const salt = bcryptjs.genSaltSync();
     alumno.password = bcryptjs.hashSync(password, salt);

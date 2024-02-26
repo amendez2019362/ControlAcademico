@@ -1,0 +1,75 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "alumno",
+    "dateExported": "2024-02-26T05:10:00.390Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "fbd04317-ecaa-47f9-979c-c9cc6f299382",
+            "colId": "1bba19cb-69d2-43c7-98ef-d28feca8ab67",
+            "containerId": "",
+            "name": "alumnoPost",
+            "url": "http://localhost:3000/api/alumno",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-24T20:11:44.568Z",
+            "modified": "2024-02-26T05:00:35.021Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Elmejor\",\n  \"correo\": \"Elmejor@kinal.edu.gt\",\n  \"password\": \"465123\",\n  \"cursos\": [\n    \"65dc17613afb8f110e310fda\",\n    \"65dc0166fe778074d35d0a4c\",\n    \"65dc0a87ab2b7b490cadef3e\"\n    ]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e7442ae4-3814-40d3-a4aa-fb6697fb20ea",
+            "colId": "1bba19cb-69d2-43c7-98ef-d28feca8ab67",
+            "containerId": "",
+            "name": "verCurso",
+            "url": "http://localhost:3000/api/alumno",
+            "method": "GET",
+            "sortNum": 30000,
+            "created": "2024-02-26T02:56:05.244Z",
+            "modified": "2024-02-26T03:57:30.960Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "89e842e8-39c5-4587-9620-125cc25c3d33",
+            "colId": "1bba19cb-69d2-43c7-98ef-d28feca8ab67",
+            "containerId": "",
+            "name": "alumnoPut",
+            "url": "http://localhost:3000/api/alumno/65dc0a87ab2b7b490cadef3e",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-02-26T02:56:46.534Z",
+            "modified": "2024-02-26T05:07:07.852Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Angel\",\n  \"correo\": \"Angel@kinal.edu.gt\",\n  \"password\": \"123456\",\n  \"cursos\": [\n    \"65dc17613afb8f110e310fda\",\n    \"65dc0166fe778074d35d0a4c\",\n    \"65dc1c37bb6205d06f753d68\"\n    ]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "dfdd1e49-f30e-4b86-bd09-7a9e801a2717",
+            "colId": "1bba19cb-69d2-43c7-98ef-d28feca8ab67",
+            "containerId": "",
+            "name": "alumnoDelete",
+            "url": "http://localhost:3000/api/alumno/65dc088f42a4b730f9bca357",
+            "method": "DELETE",
+            "sortNum": 50000,
+            "created": "2024-02-26T02:57:06.098Z",
+            "modified": "2024-02-26T03:50:11.185Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

@@ -37,7 +37,7 @@ const validarJWT = async (req, res, next) => {
         }
 
         if (maestro) {
-            if (!maestro.status) {
+            if (!maestro.estado) {
                 return res.status(401).json({
                     msg: "El token es invalido | Profesor con estado: false",
                 });
@@ -60,4 +60,3 @@ const validarJWT = async (req, res, next) => {
 module.exports = {
     validarJWT,
 }
-

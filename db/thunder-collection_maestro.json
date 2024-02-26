@@ -1,0 +1,42 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "maestro",
+    "dateExported": "2024-02-26T05:10:32.445Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "05bcfbdc-cfa9-4be3-b353-52f7cfc352e1",
+            "colId": "20f27ed4-4fae-4074-bcb8-547ae1b53700",
+            "containerId": "",
+            "name": "maestroPost",
+            "url": "http://localhost:3000/api/maestro",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-02-26T03:00:27.678Z",
+            "modified": "2024-02-26T04:49:11.792Z",
+            "headers": [],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"mendez\",\n  \"correo\": \"mendez@kinal.edu.gt\",\n  \"password\": \"000001\",\n  \"cursos\": [\n    \"65dc17613afb8f110e310fda\"\n    ]\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "e762ae52-efc1-4ffc-ae39-dafbebc334ec",
+            "colId": "20f27ed4-4fae-4074-bcb8-547ae1b53700",
+            "containerId": "",
+            "name": "maestrosGet",
+            "url": "http://localhost:3000/api/maestro",
+            "method": "GET",
+            "sortNum": 40000,
+            "created": "2024-02-26T04:46:53.709Z",
+            "modified": "2024-02-26T04:47:00.249Z",
+            "headers": [],
+            "params": [],
+            "tests": []
+        }
+    ]
+}

@@ -1,0 +1,95 @@
+{
+    "client": "Thunder Client",
+    "collectionName": "cursos",
+    "dateExported": "2024-02-26T05:10:25.762Z",
+    "version": "1.1",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "02685b28-7bd5-4540-ae8d-c431dfad7cdb",
+            "colId": "0162d662-4c26-4d7f-8635-349daf12a8fc",
+            "containerId": "",
+            "name": "cursoGet",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-02-25T21:39:38.364Z",
+            "modified": "2024-02-26T04:38:29.253Z",
+            "headers": [
+                {
+                    "name": "token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRjMTIxZDZiOTljYTRmYTM4NTQwMzgiLCJpYXQiOjE3MDg5MjIyNjEsImV4cCI6MTcwODkyNTg2MX0.59SVt1u7heDCeDPcY9_89i9-1G5Amc9yAqQ7a6yS58Q"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "4ee4e1e8-0c02-4459-841b-8f8c5c713a63",
+            "colId": "0162d662-4c26-4d7f-8635-349daf12a8fc",
+            "containerId": "",
+            "name": "cursoPost",
+            "url": "http://localhost:3000/api/cursos",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-02-26T02:58:27.405Z",
+            "modified": "2024-02-26T04:56:33.515Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRjMTVmMjE5N2RkODA0YTk2YzlkM2IiLCJpYXQiOjE3MDg5MjIzNzIsImV4cCI6MTcwODkyNTk3Mn0.8rC-Meio-icEnjNrgpiBkhX3iM5iOhurMnLiV6bs4fc"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Lenguaje\",\n  \"descripcion\": \"clase de lenguaje de 8am a 12pm\"\n}",
+                "form": []
+            },
+            "tests": []
+        },
+        {
+            "_id": "74d40690-0864-4552-9365-24929bb64eba",
+            "colId": "0162d662-4c26-4d7f-8635-349daf12a8fc",
+            "containerId": "",
+            "name": "cursoDelete",
+            "url": "http://localhost:3000/api/cursos/65dbb4e412f5eb20b8aa7bc4",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-02-26T04:51:02.680Z",
+            "modified": "2024-02-26T04:52:17.965Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRjMTVmMjE5N2RkODA0YTk2YzlkM2IiLCJpYXQiOjE3MDg5MjIzNzIsImV4cCI6MTcwODkyNTk3Mn0.8rC-Meio-icEnjNrgpiBkhX3iM5iOhurMnLiV6bs4fc"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "2962b425-250c-435d-b709-dacd55396ca6",
+            "colId": "0162d662-4c26-4d7f-8635-349daf12a8fc",
+            "containerId": "",
+            "name": "cursoPut",
+            "url": "http://localhost:3000/api/cursos/65dc17613afb8f110e310fda",
+            "method": "PUT",
+            "sortNum": 40000,
+            "created": "2024-02-26T04:53:29.486Z",
+            "modified": "2024-02-26T04:54:52.017Z",
+            "headers": [
+                {
+                    "name": "x-token",
+                    "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOiI2NWRjMTVmMjE5N2RkODA0YTk2YzlkM2IiLCJpYXQiOjE3MDg5MjIzNzIsImV4cCI6MTcwODkyNTk3Mn0.8rC-Meio-icEnjNrgpiBkhX3iM5iOhurMnLiV6bs4fc"
+                }
+            ],
+            "params": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"nombre\": \"Tecnologia\"\n}",
+                "form": []
+            },
+            "tests": []
+        }
+    ]
+}
